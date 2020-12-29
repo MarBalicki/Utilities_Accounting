@@ -1,13 +1,20 @@
-package pl.accounting.utilities.model;
+package pl.accounting.utilities.dto;
 
-import javax.persistence.MappedSuperclass;
+public class OwnerDto {
 
-@MappedSuperclass
-public class Person {
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
 
-    protected String firstName;
-    protected String lastName;
-    protected String phoneNumber;
+    public OwnerDto() {
+    }
+
+    public OwnerDto(String firstName, String lastName, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+
+    }
 
     public String getFirstName() {
         return firstName;

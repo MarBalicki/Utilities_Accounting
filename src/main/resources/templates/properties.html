@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new property</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/index">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/properties">Properties</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/tenants">Tenants</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/addProperty">Add Property</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<table class="table">
+<!--    <caption>List of users</caption>-->
+    <thead>
+    <tr>
+        <th scope="col"></th>
+        <th scope="col">Property name</th>
+        <th scope="col">Street</th>
+        <th scope="col">City</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Owner phone number</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="property:${properties}">
+        <th scope="row">1</th>
+        <td>
+            <a th:href="@{'/property/' + ${property.id} + '/tenants/'}">
+                <span th:text="${property.name}">Property name</span>
+            </a>
+        </td>
+        <td th:text="${property.street}">Street</td>
+        <td th:text="${property.zipCode} + ' ' + ${property.city}">City</td>
+        <td th:text="${property.ownerFirstName} + ' ' + ${property.ownerLastName}">Owner</td>
+        <td th:text="${property.ownerPhoneNumber}">Owner phone number</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
