@@ -5,13 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Set;
 
 @Entity
-public class Tenant {
+public class Tenant extends Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Embedded
-    private Person tenant;
     @ManyToOne
     private Property property;
     private SimpleDateFormat leaseStart;

@@ -1,8 +1,8 @@
 package pl.accounting.utilities.model;
 
-import javax.persistence.Embeddable;
+import javax.persistence.MappedSuperclass;
 
-@Embeddable
+@MappedSuperclass
 public class Person {
 
     private String firstName;
