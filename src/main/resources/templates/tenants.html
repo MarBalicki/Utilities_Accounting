@@ -24,6 +24,9 @@
                 <a class="nav-link" href="/tenants">Tenants</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/utilities">Utilities</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/addProperty">Add Property</a>
             </li>
         </ul>
@@ -36,9 +39,8 @@
     <tr>
         <th scope="col"></th>
         <th scope="col">Property name</th>
-        <th scope="col">Tenant first name</th>
-        <th scope="col">Tenant last name</th>
-        <th scope="col">Tenant phone number</th>
+        <th scope="col">Tenant</th>
+        <th scope="col">Phone number</th>
         <th scope="col">Lease start</th>
         <th scope="col">Lease end</th>
         <th scope="col">Current</th>
@@ -47,15 +49,17 @@
     <tbody>
     <tr th:each="tenant:${allTenants}">
         <th scope="row">1</th>
-        <!--        <td th:text="${property.name}">Property name</td>-->
         <td>
             <a th:href="@{/tenants}">
                 <span th:text="${tenant.propertyName}">Property name</span>
             </a>
         </td>
-        <td th:text="${tenant.tenantFirstName}">Tenant first name</td>
-        <td th:text="${tenant.tenantLastName}">Tenant last name</td>
-        <td th:text="${tenant.tenantPhoneNumber}">Tenant phone number</td>
+        <td>
+            <a th:href="@{'/tenant/' + ${tenant.id} + '/utilities'}">
+                <span th:text="${tenant.tenantFirstName} + ' ' + ${tenant.tenantLastName}">Tenant</span>
+            </a>
+        </td>
+        <td th:text="${tenant.tenantPhoneNumber}">Phone number</td>
         <td th:text="${tenant.leaseStart}">Lease start</td>
         <td th:text="${tenant.leaseEnd}">Lease end</td>
         <td th:text="${tenant.current}">Current</td>
@@ -63,7 +67,7 @@
     </tbody>
 </table>
 <div class="col-5">
-    <form th:action="@{'/property/' + ${propertyId} + '/addTenant'}" method="get">
+    <form th:if="${propertyId}" th:action="@{'/property/' + ${propertyId} + '/addTenant'}" method="get">
         <button type="submit" class="btn btn-primary">New Tenant</button>
     </form>
 </div>

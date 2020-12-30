@@ -10,9 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import pl.accounting.utilities.dto.PropertyDto;
 import pl.accounting.utilities.dto.TenantDto;
-import pl.accounting.utilities.model.Property;
 import pl.accounting.utilities.service.PropertyService;
 
+import java.text.ParseException;
 import java.util.List;
 
 @Controller
@@ -33,7 +33,7 @@ public class PropertyController {
 
     @PostMapping("/addProperty")
     public RedirectView addProperty(@ModelAttribute("newProperty") PropertyDto propertyDto, Model model) {
-        model.addAttribute("newProperty", propertyDto);
+        model.addAttribute("newProperty", propertyDto);//check if can be remove
         propertyService.addProperty(propertyDto);
         return new RedirectView("properties");
     }
@@ -48,6 +48,7 @@ public class PropertyController {
 
     @GetMapping("/property/{id}/addTenant")
     public ModelAndView addTenantToProperty(@PathVariable("id") Long propertyId) {
+        //todo if is in null then have to pick property
         ModelAndView mav = new ModelAndView("addTenant");
         mav.addObject("newTenant", new TenantDto());
         mav.addObject("propertyId", propertyId);
@@ -55,8 +56,8 @@ public class PropertyController {
     }
 
     @PostMapping("/property/{id}/addTenant")
-    public RedirectView addTenantToProperty(@ModelAttribute("newTenant") TenantDto tenantDto,
-                                            @PathVariable("id") Long propertyId) {
+    public RedirectView addTenantToProperty(@PathVariable("id") Long propertyId,
+                                            @ModelAttribute("newTenant") TenantDto tenantDto) {
         propertyService.addTenantToProperty(tenantDto, propertyId);
         return new RedirectView("tenants");
     }

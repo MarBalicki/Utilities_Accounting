@@ -7,6 +7,7 @@ import pl.accounting.utilities.model.Property;
 import pl.accounting.utilities.model.Tenant;
 import pl.accounting.utilities.repository.PropertyRepository;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -35,7 +36,6 @@ public class PropertyService {
 
     public void addTenantToProperty(TenantDto tenantDto, Long propertyId) {
         Tenant tenant = Tenant.apply(tenantDto);
-        tenant.setCurrent(true);
         Optional<Property> propertyOptional = propertyRepository.findById(propertyId);
         if (propertyOptional.isPresent()) {
             Property property = propertyOptional.get();

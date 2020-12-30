@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new tenant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/index">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/properties">Properties</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/tenants">Tenants</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/utilities">Utilities</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/addProperty">Add Property</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<form th:action="@{'/tenant/' + ${tenantId} + '/addUtilities'}" th:object="${newUtilities}" method="post">
+    <div class="row">
+        <div class="col">
+            <input th:field="*{date}" type="text" class="form-control" placeholder="Date yyyy-MM-dd" required>
+        </div>
+        <div class="col">
+            <input th:field="*{administrativeFee}" type="text" class="form-control" placeholder="Administrative fee 0.00" required>
+        </div>
+        <div class="col">
+            <input th:field="*{payment}" type="text" class="form-control" placeholder="Payment 0.00" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <input th:field="*{heatingPrediction}" type="text" class="form-control" placeholder="Heating Prediction 0.00">
+        </div>
+        <div class="col">
+            <input th:field="*{heatingStake}" type="text" class="form-control" placeholder="Heating Stake 0.00">
+        </div>
+        <div class="col">
+            <input th:field="*{heatingQuantity}" type="text" class="form-control" placeholder="Heating Quantity 0.00">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <input th:field="*{coldWaterPrediction}" type="text" class="form-control" placeholder="Cold Water Prediction 0.00">
+        </div>
+        <div class="col">
+            <input th:field="*{hotWaterPrediction}" type="text" class="form-control" placeholder="Hot Water Prediction 0.00">
+        </div>
+        <div class="col">
+            <input th:field="*{coldWaterStake}" type="text" class="form-control" placeholder="Cold Water Stake 0.00">
+        </div>
+        <div class="col">
+            <input th:field="*{hotWaterStake}" type="text" class="form-control" placeholder="Hot Water Stake 0.00">
+        </div>
+        <div class="col">
+            <input th:field="*{coldWaterQuantity}" type="text" class="form-control" placeholder="Cold Water Quantity 0.00">
+        </div>
+        <div class="col">
+            <input th:field="*{hotWaterQuantity}" type="text" class="form-control" placeholder="Hot Water Quantity 0.00">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <input th:field="*{electricityAdvance}" type="text" class="form-control" placeholder="Electricity Advance 0.00">
+        </div>
+        <div class="col">
+            <input th:field="*{electricityPrediction}" type="text" class="form-control" placeholder="Electricity Prediction 0.00">
+        </div>
+        <div class="col">
+            <input th:field="*{electricityStake}" type="text" class="form-control" placeholder="Electricity Stake 0.00">
+        </div>
+        <div class="col">
+            <input th:field="*{electricityQuantity}" type="text" class="form-control" placeholder="Electricity Quantity 0.00">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <input th:field="*{gasAdvance}" type="text" class="form-control" placeholder="Gas Advance 0.00">
+        </div>
+        <div class="col">
+            <input th:field="*{gasPrediction}" type="text" class="form-control" placeholder="Gas Prediction 0.00">
+        </div>
+        <div class="col">
+            <input th:field="*{gasStake}" type="text" class="form-control" placeholder="Gas Stake 0.00">
+        </div>
+        <div class="col">
+            <input th:field="*{gasQuantity}" type="text" class="form-control" placeholder="Gas Quantity 0.00">
+        </div>
+    </div>
+    <div class="col-5">
+        <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+</form>
+
+</body>
+</html>

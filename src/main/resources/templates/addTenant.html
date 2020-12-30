@@ -2,7 +2,7 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add new property</title>
+    <title>Add new tenant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
@@ -21,6 +21,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/tenants">Tenants</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/utilities">Utilities</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/addProperty">Add Property</a>
@@ -44,7 +47,7 @@
             <input th:field="*{tenantPhoneNumber}" type="text" class="form-control" placeholder="Tenant phone number">
         </div>
         <div class="col-5">
-            <input th:field="*{leaseStart}" type="text" class="form-control" placeholder="Date lease start yyyy-MM-dd">
+            <input th:field="*{leaseStart}" type="text" class="form-control" placeholder="Date lease start yyyy-MM-dd" required>
         </div>
         <div class="col-5">
             <input th:field="*{leaseEnd}" type="text" class="form-control" placeholder="Date lease end yyyy-MM-dd">

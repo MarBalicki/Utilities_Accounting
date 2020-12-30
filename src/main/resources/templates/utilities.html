@@ -38,36 +38,45 @@
     <thead>
     <tr>
         <th scope="col"></th>
-        <th scope="col">Property name</th>
-        <th scope="col">Tenant first name</th>
-        <th scope="col">Tenant last name</th>
-        <th scope="col">Tenant phone number</th>
-        <th scope="col">Lease start</th>
-        <th scope="col">Lease end</th>
-        <th scope="col">Current</th>
+        <th scope="col">Tenant</th>
+        <th scope="col">Month</th>
+        <th scope="col">Administration fee</th>
+        <th scope="col">Payment</th>
+        <th scope="col">Heating Balance</th>
+        <th scope="col">Water Balance</th>
+        <th scope="col">Electricity Balance</th>
+        <th scope="col">Gas Balance</th>
+        <th scope="col">Total Balance</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="tenant:${allTenants}">
+    <tr th:each="utilities:${allUtilities}">
         <th scope="row">1</th>
-        <!--        <td th:text="${property.name}">Property name</td>-->
-        <td>
-            <a th:href="@{/tenants}">
-                <span th:text="${tenant.propertyName}">Property name</span>
-            </a>
-        </td>
-        <td th:text="${tenant.tenantFirstName}">Tenant first name</td>
-        <td th:text="${tenant.tenantLastName}">Tenant last name</td>
-        <td th:text="${tenant.tenantPhoneNumber}">Tenant phone number</td>
-        <td th:text="${tenant.leaseStart}">Lease start</td>
-        <td th:text="${tenant.leaseEnd}">Lease end</td>
-        <td th:text="${tenant.current}">Current</td>
+<!--        <td>-->
+<!--            <a th:href="@{/tenants}">-->
+<!--                <span th:text="${tenant.propertyName}">Property name</span>-->
+<!--            </a>-->
+<!--        </td>-->
+<!--        <td>-->
+<!--            <a th:href="@{'/tenant/' + ${tenant.id} + '/utilities'}">-->
+<!--                <span th:text="${tenant.tenantFirstName} + ' ' + ${tenant.tenantLastName}">Tenant</span>-->
+<!--            </a>-->
+<!--        </td>-->
+        <td th:text="${utilities.tenantName}">Tenant</td>
+        <td th:text="${utilities.date}">Date</td>
+        <td th:text="${utilities.administrativeFee}">Administration fee</td>
+        <td th:text="${utilities.payment}">Payment</td>
+        <td th:text="${utilities.heatingBalance}">Heating Balance</td>
+        <td th:text="${utilities.waterBalance}">Water Balance</td>
+        <td th:text="${utilities.electricityBalance}">Electricity Balance</td>
+        <td th:text="${utilities.gasBalance}">Gas Balance</td>
+        <td th:text="${utilities.balance}">Total Balance</td>
     </tr>
     </tbody>
 </table>
 <div class="col-5">
-    <form th:action="@{'/property/' + ${propertyId} + '/addTenant'}" method="get">
-        <button type="submit" class="btn btn-primary">New Tenant</button>
+    <form th:if="${tenantId}" th:action="@{'/tenant/' + ${tenantId} + '/addUtilities'}" method="get">
+        <button type="submit" class="btn btn-primary">New Month</button>
     </form>
 </div>
 
